@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" >
 
 <head>
     <meta charset="utf-8">
-    <title>Admin</title>
+    <title>Admin | E-Shopper</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -30,18 +30,18 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head>
-<body onload="onloadAll1()">
+<body  >
   <header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
 			<a href="index.html" style="text-align: center; display: block; padding: 20px;"><img src="images/home/logo.png" alt="" /></a>
 		</div><!--/header_top-->
   </header>
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0" >
         <div class="row m-0 p-0">
             <div class="col-2 pl-0 p-0" style="height: 100vh;">
                 <div style="position: fixed;width: 220px;">
-                    <div onclick="showAdd_watch()" id="add_watch3" class="add_produre mt-3" style="width: 80%;background: #FE980F;margin: auto;border-radius: 10px;padding: 12px;">
-                        <p class="mb-0 text-white">Thêm sản phẩm &nbsp&nbsp<i class="fa fa-plus" aria-hidden="true"></i>
+                    <div  id="add_watch3" class="add_produre mt-3" style="width: 80%;background: #FE980F;margin: auto;border-radius: 10px;padding: 12px;">
+                        <p  class="mb-0 text-white " id="addProduct" style=" cursor: pointer;">Thêm sản phẩm &nbsp&nbsp<i class="fa fa-plus" aria-hidden="true"></i>
                         </p>
                     </div>
                     <div class="add_produre mt-4" style="width: 85%;margin: auto;border-radius: 10px;display: flex;">
@@ -57,7 +57,7 @@
 
 
                         <div class="text_bar p-2 pr-0">
-                            <p id="dashboard_text" class="mb-0" style="font-weight: bold;">Trang tổng quan</p>
+                            <p id="dashboard_text" class="mb-0" style="font-weight: bold;  cursor: pointer;">Trang tổng quan</p>
                         </div>
                     </div>
 
@@ -66,7 +66,7 @@
                             <img src="">
                         </div>
                         <div class="text_bar p-2 pr-0" style="width: 80%;">
-                            <p id="management_watch" class="mb-0">Quản lý sản phẩm</p>
+                            <p class="addProducts" class="mb-0" style="cursor: pointer;" >Quản lý sản phẩm</p>
                         </div>
                     </div>
 
@@ -84,49 +84,32 @@
                             <img src="">
                         </div>
                         <div class="text_bar p-2 pr-0" style="width: 80%;">
-                            <p id="management_user" class="mb-0">Quản lý tài khoản</p>
+                            <p id="management_user" class="mb-0" style="cursor: pointer;"">Quản lý tài khoản</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-10  p-0">
+            <div class="col-10  p-0" >
                 <div class="row m-0 p-0 ">
-                    <div class="col-12 bg-white" style="height: 70px;">
-
-                    </div>
-                    <div id="dashboard_box" class="col-12 bg-white mt-1" style="height: 570px;">
+                    <!-- Trang tổng quan -->
+                    <div class="col-12 bg-white" style="height: 70px; " >
+                        <div id="ttquan" class="col-12 bg-white mt-1" style="height: 570px; ">
                         <p class="font-weight-bold" style="font-size: 130%">Trang tổng quan</p>
-                        <div id="input_watch" style="display: none;">
-
-                        </div>
+                        <div id="input_watch" style="display: none;"></div>
 
                         <div class="row m-0">
                             <div class="col-xs-12 col-sm-6 col-md-3 p-3">
-                                <div class="ana_watch pt-2 pb-0 pl-4 pr-3 shadow-sm" style="background: #fff;">
-                                    <p style="font-size: 110%" class="float-left mt-1">Sản phẩm</p>
-                                    <p id="dem_watch" style="font-size: 200%;font-weight: bold;" class="float-right mt-4 mb-2"></p>
+                                <div class="ana_watch pt-2 pb-0 pl-4 pr-3 shadow-sm" style="background: #ff8c00; color: #fff;">
+                                    <p style="font-size: 150%" class="float-left mt-1">Sản phẩm</p>
+                                    <p id="amount" style="font-size: 200%;font-weight: bold;" class="float-right mt-4 mb-2"></p>
                                     <div style="clear: both;"></div>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-3 p-3">
-                                <div class="ana_watch pt-2 pb-0 pl-4 pr-3 shadow-sm" style="background: #fff;">
-                                    <p style="font-size: 110%" class="float-left mt-1">Khách hàng</p>
-                                    <p id="dem_cus" style="font-size: 200%;font-weight: bold;" class="float-right mt-4 mb-2"></p>
-                                    <div style="clear: both;"></div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-3 p-3">
-                                <div class="ana_watch pt-2 pb-0 pl-4 pr-3 shadow-sm" style="background: #fff;">
-                                    <p style="font-size: 110%" class="float-left mt-1">Đơn đặt</p>
+                                <div class="ana_watch pt-2 pb-0 pl-4 pr-3 shadow-sm" style="background: #ff8c00; color: #fff;">
+                                    <p style="font-size: 150%; " class="float-left mt-1">Đơn đặt</p>
                                     <p id="dem_payment" style="font-size: 200%;font-weight: bold;" class="float-right mt-4 mb-2"></p>
-                                    <div style="clear: both;"></div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-3 p-3">
-                                <div class="ana_watch pt-2 pb-0 pl-4 pr-3 shadow-sm" style="background: #fff;">
-                                    <p style="font-size: 110%" class="float-left mt-1">Phản hồi từ khách</p>
-                                    <p id="dem_comment" style="font-size: 200%;font-weight: bold;" class="float-right mt-4 mb-2"></p>
                                     <div style="clear: both;"></div>
                                 </div>
                             </div>
@@ -134,8 +117,8 @@
 
                         <div class="row m-0">
                             <div class="col-6 p-3">
-                                <div class="payment_watch_dash pt-2 pb-0 pl-4 pr-3 shadow-sm" style="height: 300px;background: #fff">
-                                    <p style="font-size: 110%" class=" mt-1">Đơn đặt hàng</p>
+                                <div class="payment_watch_dash pt-2 pb-0 pl-4 pr-3 shadow-sm" style="height: 500px;background: rgba(230, 228, 154, 0.733); color: rgb(0, 0, 0); width: 1000px;;">
+                                    <p style="font-size: 150%" class=" mt-1">Đơn đặt hàng</p>
                                     <div id="scroll_height" data-spy="scroll" data-target="#myScrollspy" data-offset="10" style="height:220px;overflow-y: scroll;padding-right: 10px;">
                                         <table class="table table-borderless" style="margin-top: -25px;">
                                             <thead>
@@ -156,60 +139,10 @@
 
                                 </div>
                             </div>
-
-                            <div class="col-6 p-3">
-                                <div class="payment_watch_dash pt-2 pb-0 pl-4 pr-3 shadow-sm" style="height: 300px;background: #fff">
-                                    <p style="font-size: 110%" class=" mt-1">Sản phẩm</p>
-                                    <div id="scroll_height2" data-spy="scroll" data-target="#myScrollspy" data-offset="10" style="height:220px;overflow-y: scroll;padding-top: 5px;padding-right: 10px;">
-                                        <table class="table table-borderless" style="margin-top: -25px;">
-                                            <thead>
-                                                <tr>
-
-                                                    <th scope="col" style="width: 60%;font-size: 115%;"></th>
-
-                                                    <th scope="col" style="width: 40%;font-size: 115%;" class="text-center"></th>
-
-                                                </tr>
-                                            </thead>
-
-                                            <tbody id="prinfManagementWatch2">
-
-
-                                            </tbody>
-
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-6 p-3">
-                                <div class="payment_watch_dash pt-2 pb-0 pl-4 pr-3 shadow-sm" style="height: 300px;background: #fff">
-                                    <p style="font-size: 110%" class="float-left mt-1">Phản hồi từ khách</p>
-                                    <div id="scroll_height2" data-spy="scroll" data-target="#myScrollspy" data-offset="10">
-                                        <table style="width: 100%">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col" style="width: 20%;font-size: 115%;">Mã đơn</th>
-                                                    <th scope="col" style="width: 40%;font-size: 115%;">Tên khách hàng
-                                                    </th>
-                                                    <th scope="col" style="width: 40%;font-size: 115%;">Phản hồi</th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody id="commentPrinf">
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
-
+<!-- ---------------------------------------------------------------------- -->
+                            <!-- Quản lý đặt hàng ----------------------------------------  -->
                     <div id="management_watch_order" class="col-12" style="display: none;">
                         <p class="font-weight-bold" style="font-size: 130%">Đơn đặt hàng</p>
                         <div class="shadow-sm pt-2" style="width: 100%;height: 530px;background: #fff;">
@@ -237,10 +170,12 @@
                             </div>
                         </div>
                     </div>
+<!-- ---------------------------------------------------------------------- -->
 
-                    <div id="management_user_box" class="col-12 bg-white mt-1" style="height: 570px;display: none;">
+<!-- Quản lý tài khoản -->
+                    <div id="management_user_box" class="col-12 bg-white mt-1" style="height: 570px; display: none;">
                         <p class="font-weight-bold" style="font-size: 130%">Quản lý tài khoản</p>
-                        <button onclick="showAddUser()" class="btn btn-primary">Thêm tài khoản</button>
+                        <button id="button_addUser" " class="btn btn-primary">Thêm tài khoản</button>
                         <div id="input_user" style="display: none;">
                             <div class="row m-0 shadow-sm pt-3">
                                 <div class="col-3">
@@ -330,28 +265,28 @@
                             </div>
                         </div>
                     </div>
-
-                    <div id="management_watch_box" class="col-12 bg-white mt-1" style="height: 570px;display: none;">
+<!-- Quản lý sản phẩm-------------------------------------------- -->
+                    <div id="qlspham_title" class="col-12 bg-white mt-1" style="height: 570px;display: none;">
                         <p class="font-weight-bold" style="font-size: 130%">Quản lý sản phẩm</p>
-                        <div id="input_watch2" style="display: none;">
+                        <div id="qlspham" style="display: none;">
                             <div class="row m-0 shadow-sm pt-3">
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Tên sản phẩm</label>
-                                        <input type="text" class="form-control" id="watchAddNameInput" placeholder="Nhập tên đồng hồ">
+                                        <input type="text" class="form-control" id="watchAddNameInput" placeholder="Nhập tên sản phẩm">
                                         <input class="float-right" type="text" id="txtId" name="txtPrice" style="border:0; border-radius: 10px;height: 40px;background:#f8fafd;width:100%;outline: none;display: none;">
                                     </div>
                                 </div>
                                 <div class="col-3" style="height: 100px;">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Mô tả sản phẩm</label>
-                                        <input type="email" class="form-control" id="watchAddNoteInput" placeholder="Mô tả đồng hồ">
+                                        <input type="email" class="form-control" id="watchAddNoteInput" placeholder="Mô tả sản phẩm"">
                                     </div>
                                 </div>
                                 <div class="col-3" style="height: 100px;">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Giá</label>
-                                        <input type="number" class="form-control" id="watchAddPriceInput" placeholder="Nhập giá đồng hồ">
+                                        <input type="number" class="form-control" id="watchAddPriceInput" placeholder="Nhập giá sản phẩm">
                                     </div>
                                 </div>
                                 <div class="col-3 p-0 pt-3 pl-3" style="height: 100px;">
@@ -361,15 +296,15 @@
                                     </div>
                                 </div>
                                 <div class="col-8 p-0  pl-3 pb-4">
-                                    <button id="addwatch2" onclick="AddWatch()" class="btn btn-primary float-left" style="background: #ff6f47;border: 1px solid #ff6f47;">Thêm</button>
-                                    <button id="updatewatch2" onclick="SaveUpdateWatch()" class="btn btn-warning text-white float-left" style="display: none;">Cập
+                                    <button id="button_add" onclick="AddProduct()" class="btn btn-primary float-left" style="background: #ff6f47;border: 1px solid #ff6f47;">Thêm</button>
+                                    <button id="button_update" onclick="SaveUpdateProduct()" class="btn btn-warning text-white float-left" style="display: none;">Cập
                                         nhật</button>
                                     <button onclick="CloseWatch()" class="btn btn-danger text-white ml-1">Đóng</button>
                                 </div>
 
                             </div>
                         </div>
-
+<!-- ---------------------------------------------------------------------- -->
                         <div class="cart_box pl-5 pt-4 shadow-sm mt-3 pb-4" style="width: 100%;margin: auto;">
                             <div id="scroll_height2" data-spy="scroll" data-target="#myScrollspy" data-offset="10" style="height:450px;overflow-y: scroll;padding-top: 5px;padding-right: 10px;">
                                 <table class="table table-borderless">
@@ -380,7 +315,7 @@
                                             <th scope="col" style="width: 20%;font-size: 115%;" class="text-center">Thao tác</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="prinfManagementWatch">
+                                    <tbody id="prinfManagementProduct">
                                     </tbody>
                                 </table>
                             </div>
@@ -392,6 +327,15 @@
     </div>
 </body>
 
-<script src="js/admin.js"></script>
+<script src="admin.js"></script>
 
 </html>
+
+
+
+
+
+
+
+
+

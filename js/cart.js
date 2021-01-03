@@ -3,8 +3,8 @@ $(document).ready(function(){
         var html = '';
         var Sum =0;
         Object.keys(abc).map((key, value) => {
-            var price = abc[key]['price'].split('$');
-            Sum = (parseInt(Sum) + (abc[key]['qty']*price[1]))
+            var price = abc[key]['price'];
+            Sum = (parseInt(Sum) + (abc[key]['qty']*price))
             
             html+= "<tr>" +
                         "<td class='cart_product'>" +
@@ -25,7 +25,7 @@ $(document).ready(function(){
                             "</div>"+
                         "</td>"+
                         "<td class='cart_total'>"+
-                            "<p class='cart_total_price' id ='total_"+key+"'>"+ '$'+(abc[key]['qty']*price[1] )+ "</p>"+
+                            "<p class='cart_total_price' id ='total_"+key+"'>"+ (abc[key]['qty']*price )+ "</p>"+
                         "</td>"+
                         "<td class='cart_delete'>"+
                             "<a class='cart_quantity_delete'  id="+key+" ><i class='fa fa-times'></i></a>"
@@ -35,7 +35,7 @@ $(document).ready(function(){
         // console.log(Sum)
         $("table tbody").append(html);
 
-    $("#totalAll").text('$'+Sum)
+    $("#totalAll").text(Sum)
 
     $(".cart_quantity_up").click(function(){
         var getId = $(this).attr('id');
@@ -43,15 +43,15 @@ $(document).ready(function(){
         // console.log(getIdtotal)
         Object.keys(abc).map((key,value) => {
             if(getId==key){
-                var price = abc[key]['price'].split('$')
+                var price = abc[key]['price']
                 // console.log(price[1])
                 abc[key]['qty']=abc[key]['qty']+1;
                 $("#qty_"+key).val(abc[key]['qty']);
-                abc[key]['total'] = '$' + (price[1]* abc[key]['qty'])
+                abc[key]['total'] =  (price* abc[key]['qty'])
                 // console.log(abc[key]['total'])
                 $(this).closest('tr').find('.cart_total_price' ).text(abc[key]['total'])
-                Sum = parseInt(Sum) + parseInt(price[1])
-                $("#totalAll").text('$'+Sum)
+                Sum = parseInt(Sum) + parseInt(price)
+                $("#totalAll").text(Sum)
                 // $("#total_"+key).text("$"+ abc[key]['total'])
                 // var str = 'tu tue';
                 // console.log(str.replace(' tu','a'));
@@ -66,15 +66,15 @@ $(document).ready(function(){
         // console.log(getId)
         Object.keys(abc).map((key,value) => {
             if(getId==key && abc[key]['qty']>=1){
-                var price = abc[key]['price'].split('$')
+                var price = abc[key]['price']
                 abc[key]['qty']=abc[key]['qty']-1;
                 $("#qty_"+key).val(abc[key]['qty']);
-                abc[key]['total'] = '$' + ( price[1]* abc[key]['qty'])
+                abc[key]['total'] =  ( price* abc[key]['qty'])
                 // console.log(abc[key]['total'])
                 // $("#total_"+key).text("$"+ abc[key]['total'])
                 $(this).closest('tr').find('.cart_total_price' ).text(abc[key]['total'])
-                Sum = parseInt(Sum) - parseInt(price[1])
-                $("#totalAll").text('$'+Sum);
+                Sum = parseInt(Sum) - parseInt(price)
+                $("#totalAll").text(Sum);
                 
                 
             }

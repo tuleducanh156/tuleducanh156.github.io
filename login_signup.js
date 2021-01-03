@@ -1,3 +1,4 @@
+///Account-------------------------------------------------------------------
 var account = JSON.parse(localStorage.getItem("account"));
 if (account === null) {
   account = [];
@@ -22,6 +23,182 @@ if (account === null) {
     },
   ];
   localStorage.setItem("account", JSON.stringify(account));
+}
+
+//in ra index
+function listWatch() {
+  var product = JSON.parse(localStorage.getItem("product"));
+  if (product === null) {
+    product = [
+      {
+        id: 0,
+        name: "Easy Polo Black Edition",
+        price: "90000",
+        note: "Male",
+        image: "images/home/gallery1.jpg",
+      },
+      {
+        id: 1,
+        name: "Easy Polo Black",
+        price: "50000",
+        note: "Female",
+        image: "images/home/gallery2.jpg",
+      },
+      {
+        id: 2,
+        name: "Easy Polo ",
+        price: "130000",
+        note: "Male",
+        image: "images/home/gallery3.jpg",
+      },
+      {
+        id: 3,
+        name: "Easy Polo ",
+        price: "130000",
+        note: "Male",
+        image: "images/home/gallery3.jpg",
+      },
+      {
+        id: 4,
+        name: "Easy Polo ",
+        price: "130000",
+        note: "Male",
+        image: "images/home/gallery3.jpg",
+      },
+      {
+        id: 5,
+        name: "Easy Polo ",
+        price: "130000",
+        note: "Male",
+        image: "images/home/gallery3.jpg",
+      },
+      {
+        id: 6,
+        name: "Easy Polo ",
+        price: "130000",
+        note: "Male",
+        image: "images/home/gallery3.jpg",
+      },
+      {
+        id: 7,
+        name: "Easy Polo ",
+        price: "130000",
+        note: "Male",
+        image: "images/home/gallery3.jpg",
+      },
+    ];
+    localStorage.setItem("product", JSON.stringify(product));
+    printOnScreen();
+  } else {
+    printOnScreen();
+  }
+  /////////////////////////////
+  function printOnScreen() {
+    document.getElementById("prinf_product").innerHTML = "";
+    for (let i = 0; i < product.length; i++) {
+      var prinf =	"<div class='product-image-wrapper'>"+
+								    "<div class='single-products' id="+product[i].id +">"+
+										"<div class='productinfo text-center'>"+
+											"<img src=" +product[i].image+"  width='10px' height='10px' alt='' />"+
+											"<h2>"+product[i].price+"</h2>"+
+											"<p>"+product[i].name +"</p>"+
+											"<a href='#' class='btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>"+
+										"</div>"+
+										"<div class='product-overlay'>"+
+                    "<div class='overlay-content'>"+
+                    "<h2>"+product[i].price+"</h2>"+
+                    "<p>"+product[i].name+"</p>"+
+                    "<a href='#' class='btn btn-default add-to-cart'><i class='fa fa-shopping-cart'></i>Add to cart</a>"+
+                    "</div>"+
+										"</div>"+
+								"</div>"+
+								  "<div class='choose'>"+
+                    "<ul class='nav nav-pills nav-justified'>"+
+                    "<li><a href='#'><i class='fa fa-plus-square'></i>Add to wishlist</a></li>"+
+                    "<li><a href='#''><i class='fa fa-plus-square'></i>Add to compare</a></li>"+
+                    "	</ul>"+
+								  "</div>"+
+                  "</div>"+
+                "</div>";
+//       var prinf =
+//         `<div class="col-12 col-sm-6 col-md-4 col-lg-3 p-4" style="margin: 10px;">
+//         <div class="produre_box bg-white shadow-sm">
+//         <div class="image_box">
+//             <img src="` +
+//         product[i].image +
+//         `" width="100%" height="100%" style="">
+//         </div>
+//         <div class="info_box p-3 bg-white">
+//             <p class="float-left font-weight-bold mb-0" style="font-size: 115%">` +
+//         product[i].name +
+//         `</p><p class="float-right font-weight-bold mb-2" style="font-size: 115%">` +
+//         product[i].price +
+//         `đ</p>
+//             <div style="clear: both;"></div>
+
+//             <p style="font-size: 85%;height:35px;">` +
+//         product[i].note +
+//         `</p>
+//             <div class="order_box float-right">
+//                 <div onclick="checkorder(` +
+//         product[i].id +
+//         `)" class="order_button float-right pt-2">
+//                     <a class="btn btn-info btn-add-to-cart" style="text-align:center;">
+//                         <i class="fas fa-shopping-cart" aria-hidden="true"> Add to card</i>
+//                     </a>
+
+//                 </div>
+//             </div>
+//             <div style="clear: both;"></div>
+//         </div>
+//     </div>
+// </div>`;
+      document.getElementById("prinf_product").innerHTML += prinf;
+    }
+    $(document).ready(function(){
+      $("a.add-to-cart").click(function(){
+           var getId = $(this).closest(".single-products").attr('id');
+            var h2 = $(this).closest(".overlay-content").find("h2").text();
+            var p = $(this).closest(".overlay-content").find("p").text();
+           var img = $(this).closest(".single-products").find("img").attr("src");
+           var flag = true;
+           var objcha = {};
+           var objcon = {};
+           if(localStorage.getItem('demo')){
+               objcha = JSON.parse(localStorage.getItem('demo'));
+          
+              Object.keys(objcha).map((key,value)=>{ 
+                  if(getId==key){ 
+                      objcha[key]['qty']= objcha[key]['qty'] +1 
+                      flag = false;
+                      console.log(objcha[key]['qty'])
+                  }
+              })
+          }
+           if (flag) {
+              objcon = {
+               'title': p,
+               'price': h2,
+               'image': img,
+               'qty' : 1,
+               'total':h2
+           }
+           objcha[getId] = objcon;
+           }
+           localStorage.setItem('demo', JSON.stringify(objcha))
+           var sosp = localStorage.length('demo');
+          $('.fa-shopping-cart').text(sosp)
+           
+           return false;
+      })
+    
+    });
+  }
+}
+
+//--------------------------------------
+function onloadAll() {
+  listWatch();
 }
 
 var idup = JSON.parse(localStorage.getItem("idup"));
@@ -122,7 +299,7 @@ function Signup() {
       "Vui lòng nhập đầy đủ thông tin";
   }
 }
-var id_user="";
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 function Login() {
   for (i = 0; i < account.length; i++) {
@@ -132,11 +309,11 @@ function Login() {
     ) {
       checkLogin = account[i].id;
       localStorage.setItem("checkLogin", JSON.stringify(checkLogin));
-      id_user =checkLogin;
+      // document.getElementById('logout').write = account[i].username
       if (account[i].level == 0) {
         document.getElementById("statusLogin").innerHTML =
           "Đăng nhập thành công thường";
-        location.href = "index.html";
+        location.href = "indexUser.html";
         // alert("ok");
         // console.log(document.getElementsByClassName("login"));
         // .addEventListener("click", function () {
@@ -177,76 +354,3 @@ function Login() {
       "Sai mật khẩu hoặc tài khoản";
   }
 }
-$(document).ready(function(){
-  var account = JSON.parse(localStorage.getItem('account')) ;
-      var html = '';
-      Object.keys(account).map((key, value) => {
-          
-          html+= "<form action='#' method='POST'>"+
-          "<input type='text' name='name' placeholder='Name' value="+account[key]['username']+"/>"+
-          
-          "<input type='email' name ='email' placeholder='Email' value="+account[key]['password']+"/>"+
-          
-         " <input type='number' name ='password' placeholder='Password' />	"+
-                    
-          <button type="submit" name ="update" class="btn btn-default">Update</button>
-        
-          
-        +"</form>"  
-      })
-    })
-// var buttonAdd = document.getElementById("button-add");
-// buttonAdd.onclick = function(e) {
-//   e.preventDefault();
-
-//   var name = document.getElementById("name").value;
-//   var price = document.getElementById("price").value;
-//   var image = URL.createObjectURL(form.image.files[0]);
-
-//   if(localStorage.getItem("listProducts") == null) {
-//     var products = [];
-//   } else {
-//     var products = JSON.parse(localStorage.getItem("listProducts"));
-//   }
-
-//   products.push({
-//     id: products.length + 1,
-//     name: name,
-//     price: price,
-//     image: image
-//   });
-
-//   localStorage.setItem("listProducts", JSON.stringify(products));
-
-//   products = JSON.parse(localStorage.getItem("listProducts"));  
-//   var showProducts = formatArray(products);
-//   document.getElementById("product-item").innerHTML = showProducts.join("");
-// }
-
-// function listProducts() {
-//   if(localStorage.getItem("listProducts") != null) {
-//     products = JSON.parse(localStorage.getItem("listProducts"));  
-//     var showProducts = formatArray(products);
-//     document.getElementById("product-item").innerHTML = showProducts.join("");
-//   }
-// }
-
-// function formatArray(products) {
-//   var renderProducts = products.map((element, index) => {
-//     return `
-//       <div class="col l-2-4">
-//         <a href="" class="product__item">
-//           <div class="product__item-img"
-//             style="background-image: url(${element.image})">
-//           </div>
-//           <h4 class="product__item-label">${element.name}</h4>
-//           <span class="product__item-price">${element.price} đ</span>
-//           <button type="button" class="product__item-buy">
-//             <i class="fas fa-cart-plus"></i>Đặt Mua
-//           </button>
-//         </a>
-//       </div>
-//     `;
-//   });
-//   return renderProducts;
-// }
